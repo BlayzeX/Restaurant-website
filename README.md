@@ -4,7 +4,7 @@ A modern and elegant restaurant website built with HTML, CSS & Vanilla JavaScrip
 Designed to help Moroccan restaurants establish a professional online presence.
 
 ## Live Demo
-🌐 [View Website](https://BlayzeX.github.io/Restaurant-website)
+🌐 [View Website](https://BlayzeX.github.io/Restaurant-website/)
 
 ## Features
 - Responsive design for all devices 📱
