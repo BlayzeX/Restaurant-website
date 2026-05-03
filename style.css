@@ -250,7 +250,7 @@ footer {
         min-height: auto;
     }
     .food-list {
-        flex-direction: column;
+        flex: 1 1 45%;
         justify-content: center;
     }
     #about p {
