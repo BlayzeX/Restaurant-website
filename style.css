@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -7,58 +6,54 @@
 }
 
 body {
+    font-family: 'Inter', sans-serif;
     background: url('https://www.image2url.com/r2/default/images/1777754244285-e9ac2279-84f2-4ae7-84ee-7872e63e5b9e.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* ✨ parallax خفيف */
-    width: 100%;
+    background-attachment: fixed;
+    color: white;
     position: relative;
-    z-index: 0;
 }
 
+/* 🔥 OVERLAY */
 body::before {
     content: '';
-    position: fixed; /* fixed بدل absolute عشان يغطي عند السكرول */
+    position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0.6)
+    );
     z-index: -1;
 }
 
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-}
-
-/* ===== NAVBAR ===== */
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    cursor: pointer;
-    font-weight: 700;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
-}
-
-.logo:hover {
-    transform: translateY(-3px);
-    text-shadow: 0 0 15px rgba(255, 215, 100, 0.6); /* ✨ ذهبي بدل أبيض */
-}
-
+/* NAVBAR */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 50px;
-    width: 100%;
+    padding: 15px clamp(20px,5vw,60px);
     position: fixed;
+    width: 100%;
     top: 0;
-    z-index: 1000;
-    color: white;
     backdrop-filter: blur(12px);
-    background: rgba(0, 0, 0, 0.65);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* ✨ خط رفيع */
-    transition: background 0.3s ease;
+    background: rgba(0,0,0,0.65);
+    z-index: 1000;
 }
 
+/* 🔥 LOGO HOVER */
+.logo {
+    font-family: 'Playfair Display';
+    font-size: 1.8rem;
+    transition: 0.3s;
+}
+
+.logo:hover {
+    transform: translateY(-3px);
+    text-shadow: 0 0 15px rgba(255, 215, 100, 0.7);
+}
+
+/* NAV LINKS */
 .nav-list {
     display: flex;
     gap: 30px;
@@ -67,290 +62,188 @@ h1, h2, h3 {
 
 .nav-link {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.85);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-    padding-bottom: 3px;
-    border-bottom: 2px solid transparent;
-    transition: color 0.3s ease, border-color 0.3s ease; /* ✨ underline animation */
+    color: rgba(255,255,255,0.8);
+    position: relative;
+    transition: 0.3s;
+}
+
+/* 🔥 UNDERLINE EFFECT */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: white;
+    transition: 0.3s;
 }
 
 .nav-link:hover {
-    color: #fff;
-    border-bottom-color: rgba(255, 255, 255, 0.6);
+    color: white;
 }
 
-/* ===== HERO ===== */
-header {
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
+.nav-link:hover::after {
+    width: 100%;
 }
 
+/* MENU BUTTON */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* HERO */
 .hero {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
     margin-top: 100px;
-    min-height: 70vh;
+    min-height: 80vh;
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 50px;
-    color: white;
-    padding: 35px;
+    align-items: center;
+    gap: 15px;
     text-align: center;
 }
 
 .hero h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* ✨ responsive تلقائي */
-    letter-spacing: 1px;
+    font-size: clamp(1.8rem,4vw,3rem);
 }
 
-.hero p {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
-    margin-top: 20px;
-    color: rgb(205, 205, 205);
-    max-width: 600px;
-    line-height: 1.6;
-}
-
+/* 🔥 BUTTON HOVER */
 .hero a {
-    padding: 15px 20px;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    padding: 14px 25px;
+    background: white;
+    color: black;
+    border-radius: 30px;
     text-decoration: none;
-    border-radius: 40px;
-    text-align: center;
-    width: 280px;
-    margin-top: 20px;
-    font-weight: 500;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.5px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .hero a:hover {
-    background-color: rgb(0, 0, 0);
-    color: #ffffff;
-    transform: translateY(-3px); /* ✨ رفع خفيف */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* ===== MENU ===== */
-#menu {
-    backdrop-filter: blur(9px);
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: black;
     color: white;
-    gap: 20px;
-    padding: 40px 30px;
-    min-height: 50vh;
-    margin-bottom: 50px;
-    width: 100%;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
-#menu h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    letter-spacing: 1px;
+/* MENU */
+#menu {
+    padding: 50px 20px;
+    text-align: center;
 }
 
 .food-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* ✨ grid تلقائي */
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
     gap: 25px;
-    width: 90%;
-    max-width: 1100px;
+    margin-top: 30px;
 }
 
+/* 🔥 CARD */
 .food-card {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(6px);
-    padding: 16px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* ✨ border رفيع */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
 }
 
+/* 🔥 CARD HOVER */
 .food-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); /* ✨ shadow عميق */
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
 
-/* ✨ الإصلاح الرئيسي للصور */
 .food-card img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3; /* نسبة ثابتة دائماً */
-    object-fit: cover;   /* لا تتشوه الصورة */
+    width: 90%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
     border-radius: 10px;
 }
 
-.food-card h3 {
-    font-size: 1.1rem;
-    text-align: center;
-}
-
-.food-card p {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-    text-align: center;
-}
-
-/* ===== ABOUT ===== */
+/* ABOUT */
 #about {
-    backdrop-filter: blur(5px);
-    background: rgba(0, 0, 0, 0.4);
-    color: white;
-    padding: 50px 60px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 50px;
-    position: relative;
-}
-
-#about h1 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    padding: 50px 20px;
+    text-align: center;
 }
 
 .about {
     display: flex;
-    justify-content: space-between;
+    gap: 30px;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    gap: 40px;
+    flex-wrap: wrap;
 }
 
 #about img {
-    width: 280px;
-    height: 280px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
-    cursor: grab;
-    object-fit: cover; /* ✨ */
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    flex-shrink: 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: 0.3s;
 }
 
+/* 🔥 IMAGE HOVER */
 #about img:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 30px rgba(255,255,255,0.3);
 }
 
-#about p {
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    line-height: 1.8;
-    max-width: 600px;
-}
-
-/* ===== CONTACT ===== */
+/* CONTACT */
 #contact {
-    backdrop-filter: blur(5px);
-    background: rgba(0, 0, 0, 0.4);
-    color: white;
-    padding: 40px 30px;
-    width: 100%;
-    display: flex;
-    min-height: 40vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    padding: 50px 20px;
+    text-align: center;
 }
 
 .contact-list {
     display: flex;
-    justify-content: center;
     gap: 20px;
+    margin-top: 30px;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
 }
 
 .contact-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    padding: 24px 20px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
     border-radius: 15px;
-    display: flex;
-    width: 380px;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    width: 300px;
+    transition: 0.3s;
 }
 
+/* 🔥 CONTACT HOVER */
 .contact-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer {
-    background: rgba(0, 0, 0, 0.8);
-    color: rgba(255, 255, 255, 0.7);
     text-align: center;
     padding: 20px;
-    width: 100%;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    position: static; /* ✨ static أفضل من absolute */
+    background: rgba(0,0,0,0.8);
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 14px 20px;
-        gap: 15px;
-    }
+/* MOBILE */
+@media(max-width:768px){
 
-    .logo {
-        font-size: 1.4rem;
+    .menu-toggle {
+        display: block;
     }
 
     .nav-list {
-        gap: 16px;
-    }
-
-    .nav-link {
-        font-size: 0.85rem;
-    }
-
-    .hero a {
-        width: 220px;
-    }
-
-    .about {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        background: rgba(0,0,0,0.95);
+        display: none;
+        padding: 20px;
     }
 
-    #about img {
-        width: 200px;
-        height: 200px;
-        margin: 0;
-    }
-
-    #about p {
-        margin: 0;
-    }
-
-      .contact-card {
-        flex: 1 1 45%;    /* ✅ نفس حجم الأولين وتحتهم */
-        max-width: none;
+    .nav-list.active {
+        display: flex;
     }
 }
+
